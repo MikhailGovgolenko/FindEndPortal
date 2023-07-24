@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FindEndPortal (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "FindEndPortal (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

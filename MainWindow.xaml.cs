@@ -1,0 +1,224 @@
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Microsoft.UI;           // Needed for WindowId.
+using Microsoft.UI.Windowing; // Needed for AppWindow.
+using WinRT.Interop;
+using Microsoft.UI.Composition.SystemBackdrops;
+using System.Runtime.InteropServices; // For DllImport
+using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
+using Windows.UI.ViewManagement;
+using System.Text;
+using System.Threading.Tasks;
+using static System.Net.WebRequestMethods;
+using System.Xml.Linq;
+using CommunityToolkit.Mvvm.DependencyInjection;
+
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
+
+
+
+namespace FindEndPortal;
+
+/// <summary>
+/// An empty window that can be used on its own or navigated to within a Frame.
+/// </summary>
+public sealed partial class MainWindow : Window
+{
+    private readonly IntPtr hWnd = IntPtr.Zero;
+    
+
+    public MainWindow()
+    {
+        this.InitializeComponent();
+        this.SystemBackdrop = new MicaBackdrop();
+
+        this.ExtendsContentIntoTitleBar = true;
+        this.SetTitleBar(this.AppTitleBar);
+
+        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+        var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+        var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+
+        appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 850, Height = 740 });
+
+        appWindow.SetIcon("Assets/Ender_eye.ico");
+        Title = "FindEndPortal";
+        SubClassing();
+
+        NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems.OfType<NavigationViewItem>().First();
+        ContentFrame.Navigate(
+                   typeof(Views.FindPage),
+                   null,
+                   new Microsoft.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo()
+                   );
+
+        
+    }
+
+
+
+
+
+
+
+    private void NavigationViewControl_ItemInvoked(NavigationView sender,
+              NavigationViewItemInvokedEventArgs args)
+    {
+        if (args.IsSettingsInvoked == true)
+        {
+            ContentFrame.Navigate(typeof(Views.SettingsPage), null, args.RecommendedNavigationTransitionInfo);
+        }
+        else if (args.InvokedItemContainer != null && (args.InvokedItemContainer.Tag != null))
+        {
+            Type newPage = Type.GetType(args.InvokedItemContainer.Tag.ToString());
+            ContentFrame.Navigate(
+                   newPage,
+                   null,
+                   args.RecommendedNavigationTransitionInfo
+                   );
+        }
+    }
+
+    private void NavigationViewControl_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+    {
+        if (ContentFrame.CanGoBack) ContentFrame.GoBack();
+    }
+
+    private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
+    {
+        NavigationViewControl.IsBackEnabled = ContentFrame.CanGoBack;
+
+        if (ContentFrame.SourcePageType == typeof(Views.SettingsPage))
+        {
+            // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
+            NavigationViewControl.SelectedItem = (NavigationViewItem)NavigationViewControl.SettingsItem;
+        }
+        else if (ContentFrame.SourcePageType != null)
+        {
+            NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems
+                .OfType<NavigationViewItem>()
+                .First(n => n.Tag.Equals(ContentFrame.SourcePageType.FullName.ToString()));
+        }
+
+        NavigationViewControl.Header = ((NavigationViewItem)NavigationViewControl.SelectedItem)?.Content?.ToString();
+    }
+
+
+
+
+
+
+
+
+    private delegate IntPtr WinProc(IntPtr hWnd, PInvoke.User32.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+    private WinProc newWndProc = null;
+    private IntPtr oldWndProc = IntPtr.Zero;
+    [DllImport("user32")]
+    private static extern IntPtr SetWindowLong(IntPtr hWnd, PInvoke.User32.WindowLongIndexFlags nIndex, WinProc newProc);
+    [DllImport("user32.dll")]
+    static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, PInvoke.User32.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+
+    private void SubClassing()
+    {
+        //Get the Window's HWND
+        var hwnd = this.As<IWindowNative>().WindowHandle;
+
+        newWndProc = new WinProc(NewWindowProc);
+        oldWndProc = SetWindowLong(hwnd, PInvoke.User32.WindowLongIndexFlags.GWL_WNDPROC, newWndProc);
+    }
+
+    readonly int MinWidth = 600;
+    readonly int MinHeight = 740;
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct MINMAXINFO
+    {
+        public PInvoke.POINT ptReserved;
+        public PInvoke.POINT ptMaxSize;
+        public PInvoke.POINT ptMaxPosition;
+        public PInvoke.POINT ptMinTrackSize;
+        public PInvoke.POINT ptMaxTrackSize;
+    }
+
+    private IntPtr NewWindowProc(IntPtr hWnd, PInvoke.User32.WindowMessage Msg, IntPtr wParam, IntPtr lParam)
+    {
+        switch (Msg)
+        {
+            case PInvoke.User32.WindowMessage.WM_GETMINMAXINFO:
+                var dpi = PInvoke.User32.GetDpiForWindow(hWnd);
+                var scalingFactor = (float)dpi / 96;
+
+                MINMAXINFO minMaxInfo = Marshal.PtrToStructure<MINMAXINFO>(lParam);
+                minMaxInfo.ptMinTrackSize.x = (int)(MinWidth * scalingFactor);
+                minMaxInfo.ptMinTrackSize.y = (int)(MinHeight * scalingFactor);
+                Marshal.StructureToPtr(minMaxInfo, lParam, true);
+                break;
+
+        }
+        return CallWindowProc(oldWndProc, hWnd, Msg, wParam, lParam);
+    }
+
+
+    [ComImport]
+    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    [Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB")]
+    internal interface IWindowNative
+    {
+        IntPtr WindowHandle { get; }
+    }
+
+    private AppWindow GetAppWindowForCurrentWindow()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this);
+        WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(wndId);
+    }
+}
+
+class WindowsSystemDispatcherQueueHelper
+{
+    [StructLayout(LayoutKind.Sequential)]
+    struct DispatcherQueueOptions
+    {
+        internal int dwSize;
+        internal int threadType;
+        internal int apartmentType;
+    }
+
+    [DllImport("CoreMessaging.dll")]
+    private static extern int CreateDispatcherQueueController([In] DispatcherQueueOptions options, [In, Out, MarshalAs(UnmanagedType.IUnknown)] ref object dispatcherQueueController);
+
+    object m_dispatcherQueueController = null;
+    public void EnsureWindowsSystemDispatcherQueueController()
+    {
+        if (Windows.System.DispatcherQueue.GetForCurrentThread() != null)
+        {
+            // one already exists, so we'll just use it.
+            return;
+        }
+
+        if (m_dispatcherQueueController == null)
+        {
+            DispatcherQueueOptions options;
+            options.dwSize = Marshal.SizeOf(typeof(DispatcherQueueOptions));
+            options.threadType = 2;    // DQTYPE_THREAD_CURRENT
+            options.apartmentType = 2; // DQTAT_COM_STA
+
+            CreateDispatcherQueueController(options, ref m_dispatcherQueueController);
+        }
+    }
+}
+

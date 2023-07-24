@@ -1,0 +1,89 @@
+﻿<Page
+    x:Class="FindEndPortal.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:FindEndPortal.Views"
+    xmlns:helpers="using:FindEndPortal.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xaml="using:Microsoft.UI.Xaml"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+
+
+    <StackPanel Margin="58 4">
+        <StackPanel Margin="0 4 0 4">
+            <TextBlock
+                x:Uid="Settings_Appearance"
+                Margin="0 4 0 4"
+                Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <Expander 
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                Margin="0 4 0 4">
+                <Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon
+                            FontSize="16"
+                            Glyph="&#xE790;" />
+
+                        <StackPanel
+                            Margin="12"
+                            Orientation="Vertical">
+
+                            <TextBlock x:Uid="Settings_Theme" Style="{StaticResource BodyTextBlockStyle}" />
+
+                            <TextBlock
+                                x:Uid="Settings_Theme_Expander"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                TextWrapping="WrapWholeWords" />
+                        </StackPanel>
+                    </StackPanel>
+                </Expander.Header>
+                <Expander.Content>
+                    <RadioButtons 
+                        x:Name="ThemeRadioButtons"
+                        Margin="32 0 0 0"
+                        SelectedIndex="2">
+                        <RadioButton
+                            x:Uid="Settings_Theme_Light"
+                            x:Name="LightThemeRadioButton"
+                            Command="{x:Bind ViewModel.SetThemeCommand}"
+                            CommandParameter="Light"
+                            Tag="Light"/>
+
+                        <RadioButton
+                            x:Uid="Settings_Theme_Dark"
+                            x:Name="DarkThemeRadioButton"
+                            Command="{x:Bind ViewModel.SetThemeCommand}" 
+                            CommandParameter="Dark"
+                            Tag="Dark"/>
+
+                        <RadioButton
+                            x:Uid="Settings_Theme_Default"
+                            x:Name="SystemThemeRadioButton"
+                            Command="{x:Bind ViewModel.SetThemeCommand}"
+                            CommandParameter="Default"
+                            Tag="Default"/>
+
+                    </RadioButtons>
+                </Expander.Content>
+            </Expander>
+        </StackPanel>
+        
+        <StackPanel Margin="0 4 0 4">
+            <TextBlock
+            x:Uid="Settings_About"
+            Margin="0 4 0 4"
+            Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <TextBlock x:Uid="Settings_About_Text" Margin="0 4 0 4"/>
+            <HyperlinkButton 
+                Content="Telegram channel" 
+                NavigateUri="https://t.me/FindEndPortal" 
+                Margin="-12, 8"/>
+        </StackPanel>
+    </StackPanel>
+</Page>
