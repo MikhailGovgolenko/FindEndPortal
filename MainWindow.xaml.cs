@@ -122,7 +122,6 @@ public sealed partial class MainWindow : Window
 
 
 
-
     private delegate IntPtr WinProc(IntPtr hWnd, PInvoke.User32.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
     private WinProc newWndProc = null;
     private IntPtr oldWndProc = IntPtr.Zero;
