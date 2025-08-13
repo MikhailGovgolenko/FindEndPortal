@@ -1,0 +1,1 @@
+pyinstaller -w -F -i "D:\программирование\python projects\My projects\FindEndPortal-versions\FindEndPortal-1.4.5\Ender_eye.ico" FindEndPortal.py

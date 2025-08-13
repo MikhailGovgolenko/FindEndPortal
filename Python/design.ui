@@ -1,0 +1,1856 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>575</width>
+    <height>560</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>575</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>127</red>
+        <green>127</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>170</green>
+        <blue>170</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>127</red>
+        <green>127</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>170</green>
+        <blue>170</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>127</red>
+        <green>127</green>
+        <blue>127</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>170</red>
+        <green>170</green>
+        <blue>170</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>13</pointsize>
+    <stylestrategy>PreferDefault</stylestrategy>
+   </font>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>FindEndPortal</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/icons/Ender_eye.png</normaloff>:/icons/Ender_eye.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_5">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>7</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>550</width>
+        <height>550</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTabBar::tab {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	margin-left: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}
+
+QTabBar::tab:hover {
+	border: 2px solid rgb(194, 194, 255);
+}
+
+QTabBar::tab:selected {
+    background: rgb(129, 135, 255);
+	color: rgb(248, 246, 255);
+	border: 2px solid rgb(129, 135, 255);
+}
+
+QTabWidget::pane{
+	border: 1px;
+	background: rgb(129, 135, 255);
+}
+
+
+</string>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideNone</enum>
+      </property>
+      <property name="usesScrollButtons">
+       <bool>true</bool>
+      </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+      <property name="movable">
+       <bool>false</bool>
+      </property>
+      <property name="tabBarAutoHide">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tab">
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <attribute name="title">
+        <string>Finder</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0,0,0,0,0,0">
+          <property name="spacing">
+           <number>7</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="first_eye">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>1st eye of ender</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>80</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="paste_1">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(129, 135, 255);
+	color: rgb(248, 246, 255);
+	border-radius: 10px;
+}
+
+QPushButton:hover{	
+	background-color: rgb(115, 115, 255);
+}
+
+QPushButton:pressed{	
+	background-color: rgb(116, 98, 255);
+}</string>
+              </property>
+              <property name="text">
+               <string>Paste 1st coordinates</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="x1">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MS Shell Dlg 2</family>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}
+
+QLineEdit:hover {
+	border: 2px solid rgb(194, 194, 255);
+}
+
+QLineEdit:focus {
+	border: 2px solid rgb(140, 146, 255);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="dragEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>x:</string>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="z1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}
+
+QLineEdit:hover {
+	border: 2px solid rgb(194, 194, 255);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(140, 146, 255);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>z:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="alpha">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}
+
+QLineEdit:hover {
+	border: 2px solid rgb(194, 194, 255);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(140, 146, 255);
+}</string>
+            </property>
+            <property name="locale">
+             <locale language="English" country="UnitedStates"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>angle:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="second_eye">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>2nd eye of ender</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>80</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="paste_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(129, 135, 255);
+	color: rgb(248, 246, 255);
+	border-radius: 10px;
+}
+
+QPushButton:hover{	
+	background-color: rgb(115, 115, 255);
+}
+
+QPushButton:pressed{	
+	background-color: rgb(116, 98, 255);
+}</string>
+              </property>
+              <property name="text">
+               <string>Paste 2nd coordinates</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="x2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}
+
+QLineEdit:hover {
+	border: 2px solid rgb(194, 194, 255);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(140, 146, 255);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>x:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="z2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}
+
+QLineEdit:hover {
+	border: 2px solid rgb(194, 194, 255);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(140, 146, 255);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>z:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="beta">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}
+
+QLineEdit:hover {
+	border: 2px solid rgb(194, 194, 255);
+}
+QLineEdit:focus {
+	border: 2px solid rgb(140, 146, 255);
+}</string>
+            </property>
+            <property name="locale">
+             <locale language="English" country="UnitedStates"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>angle:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_coordinates">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Portal coordinates</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>80</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_clear">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{	
+	background-color: rgb(129, 135, 255);
+	color: rgb(248, 246, 255);
+	border-radius: 10px;
+}
+
+QPushButton:hover{	
+	background-color: rgb(115, 115, 255);
+}
+
+QPushButton:pressed{	
+	background-color: rgb(116, 98, 255);
+}
+</string>
+              </property>
+              <property name="text">
+               <string>Clear</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="x0">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>x:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="z0">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit {	
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(243, 244, 255);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>z:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_command">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>700</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{	
+	background-color: rgb(129, 135, 255);
+	color: rgb(248, 246, 255);
+	border-radius: 10px;
+}
+
+QPushButton:hover{	
+	background-color: rgb(115, 115, 255);
+}
+
+QPushButton:pressed{	
+	background-color: rgb(116, 98, 255);
+}
+
+</string>
+            </property>
+            <property name="text">
+             <string>Copy command with coordinates</string>
+            </property>
+            <property name="shortcut">
+             <string>Return</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="1" column="1">
+             <widget class="QRadioButton" name="radioButton_dark">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Dark mode</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QRadioButton" name="radioButton_light">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Light mode</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="3">
+             <widget class="QLabel" name="label_language">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>700</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Language</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" colspan="3">
+             <widget class="QLabel" name="label_mode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>700</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="text">
+               <string>Personalisation</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QRadioButton" name="radioButton_system">
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>System mode</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="3">
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>5</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="1" column="0">
+             <widget class="QTextBrowser" name="textBrowser">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>700</width>
+                <height>450</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"> QTextBrowser {
+	border: 2px solid rgb(212, 215, 255);
+	border-radius: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-color: rgb(255, 255, 255);
+ }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="html">
+               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;v1.4.5&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;to copy coordinats use f3 + C&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QComboBox" name="comboBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>700</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="acceptDrops">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="editable">
+               <bool>false</bool>
+              </property>
+              <property name="currentIndex">
+               <number>19</number>
+              </property>
+              <property name="insertPolicy">
+               <enum>QComboBox::InsertAtBottom</enum>
+              </property>
+              <property name="duplicatesEnabled">
+               <bool>false</bool>
+              </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
+              <item>
+               <property name="text">
+                <string>afrikaans</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>albanian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>amharic</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>arabic</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>azerbaijani</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>basque</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>belarusian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>bengali</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>bosnian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>bulgarian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>catalan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>cebuano</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>chichewa</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>chinese (simplified)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>chinese (traditional)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>corsican</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>czech</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>danish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>dutch</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>english</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>esperanto</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>estonian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>filipino</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>finnish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>french</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>galician</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>georgian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>german</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>greek</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>gujarati</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>haitian creole</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>hausa</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>hawaiian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>hebrew</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>hindi</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>hmong</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>hungarian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>icelandic</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>igbo</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>indonesian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>irish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>italian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>japanese</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>javanese</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>kannada</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>kazakh</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>khmer</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>korean</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>kurdish (kurmanji)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>kyrgyz</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>lao</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>latin</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>latvian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>lithuanian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>luxembourgish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>macedonian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>malagasy</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>malay</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>malayalam</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>maltese</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>maori</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>marathi</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>mongolian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>myanmar (burmese)</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>nepali</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>norwegian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>odia</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>pashto</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>persian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>polish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>portuguese</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>punjabi</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>romanian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>russian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>samoan</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>scots gaelic</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>serbian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>sesotho</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>shona</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>sindhi</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>sinhala</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>slovak</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>slovenian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>somali</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>spanish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>sundanese</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>swahili</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>swedish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>tajik</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>tamil</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>telugu</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>thai</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>turkish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>ukrainian</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>urdu</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>uzbek</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>vietnamese</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>welsh</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>yiddish</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>zulu</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
