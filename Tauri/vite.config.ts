@@ -1,18 +1,20 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// @ts-expect-error process is a nodejs global
+
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vite.dev/config/
 export default defineConfig(async () => ({
   plugins: [react()],
 
+  // Добавляем базовый путь для корректного деплоя на GitHub Pages.
+  // Во время сборки веб-версии (production) ассеты будут искаться в папке /FindEndPortal/
+  base: process.env.NODE_ENV === 'production' ? '/FindEndPortal/' : '/',
+
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
-  //
-  // 1. prevent Vite from obscuring rust errors
   clearScreen: false,
-  // 2. tauri expects a fixed port, fail if that port is not available
+  
   server: {
     port: 4321,
     strictPort: true,
