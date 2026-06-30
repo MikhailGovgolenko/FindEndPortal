@@ -269,7 +269,7 @@ body,
     font-size: 18px;
     font-weight: 600;
     color: var(--winui-accent);
-    margin-left: 6px;
+    margin-left: 0zpx;
 }
 
 /* Панель действий */
@@ -277,7 +277,6 @@ body,
     display: flex;
     gap: 12px;
     margin-top: auto;
-    padding-top: 8px;
     width: 100%;
 }
 
