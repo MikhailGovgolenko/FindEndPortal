@@ -1,0 +1,282 @@
+:root {
+    --winui-accent-system: #0078d4;
+    --winui-accent: var(--winui-accent-system);
+    --winui-accent-hover: color-mix(
+        in oklab,
+        var(--winui-accent-system) 88%,
+        #000000
+    );
+    --winui-accent-active: color-mix(
+        in oklab,
+        var(--winui-accent-system) 78%,
+        #000000
+    );
+    --winui-accent-text: #ffffff;
+
+    /* Дефолтный нативный серый фон Fluent для веб-версии */
+    --winui-window-bg: #f3f3f3;
+
+    --winui-card: rgba(255, 255, 255, 0.7);
+    --winui-card-border: rgba(0, 0, 0, 0.08);
+    --winui-card-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.04);
+    --winui-text-main: rgba(0, 0, 0, 0.9);
+    --winui-text-secondary: rgba(0, 0, 0, 0.61);
+    --winui-text-disabled: rgba(0, 0, 0, 0.36);
+    --winui-btn-standard: rgba(255, 255, 255, 0.7);
+    --winui-btn-hover: rgba(249, 249, 249, 0.8);
+    --winui-btn-active: rgba(245, 245, 245, 0.6);
+    --winui-btn-border: rgba(0, 0, 0, 0.12);
+    --winui-btn-border-bottom: rgba(0, 0, 0, 0.24);
+    --winui-control-bg: rgba(255, 255, 255, 0.6);
+    --winui-control-border: rgba(0, 0, 0, 0.15);
+    --winui-control-border-hover: rgba(0, 0, 0, 0.24);
+    --fluent-timing-fast: 0.08s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --winui-accent: color-mix(
+            in oklab,
+            var(--winui-accent-system) 85%,
+            #ffffff
+        );
+        --winui-accent-hover: color-mix(
+            in oklab,
+            var(--winui-accent-system) 75%,
+            #ffffff
+        );
+        --winui-accent-active: color-mix(
+            in oklab,
+            var(--winui-accent-system) 65%,
+            #ffffff
+        );
+        --winui-accent-text: #000000;
+
+        /* Глубокий темно-серый нативный фон Fluent для веб-версии */
+        --winui-window-bg: #202020;
+
+        --winui-card: rgba(45, 45, 45, 0.55);
+        --winui-card-border: rgba(255, 255, 255, 0.08);
+        --winui-card-shadow:
+            0 2px 4px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.12);
+        --winui-text-main: rgba(255, 255, 255, 0.96);
+        --winui-text-secondary: rgba(255, 255, 255, 0.78);
+        --winui-text-disabled: rgba(255, 255, 255, 0.44);
+        --winui-btn-standard: rgba(255, 255, 255, 0.05);
+        --winui-btn-hover: rgba(255, 255, 255, 0.09);
+        --winui-btn-active: rgba(255, 255, 255, 0.03);
+        --winui-btn-border: rgba(255, 255, 255, 0.08);
+        --winui-btn-border-bottom: rgba(255, 255, 255, 0.12);
+        --winui-control-bg: rgba(30, 30, 30, 0.7);
+        --winui-control-border: rgba(255, 255, 255, 0.1);
+        --winui-control-border-hover: rgba(255, 255, 255, 0.18);
+    }
+}
+
+/* Нормализация боксов и шрифтовой иерархии */
+* {
+    box-sizing: border-box !important;
+    font-family:
+        "Segoe UI Variable",
+        "Segoe UI",
+        -apple-system,
+        sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+#root {
+    /* Используем переменную, которая динамически сбрасывается в transparent через JS в Tauri */
+    background: var(--winui-window-bg) !important;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+/* Общая подложка приложения */
+.app-container {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Контроллер контента (генерирует внешние пустоты при сильном растяжении окон) */
+.app-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    max-height: 600px;
+    margin: auto;
+}
+
+/* Сетка карточек ввода */
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Нативные карточки Fluent */
+.win-card {
+    background: var(--winui-card);
+    border: 1px solid var(--winui-card-border);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: var(--winui-card-shadow);
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Подстраиваемая карточка результата */
+.win-card.result-card {
+    flex: 1;
+    justify-content: center;
+    min-height: 80px;
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--winui-text-main);
+    margin-bottom: 12px;
+}
+
+.result-card .card-title {
+    margin-bottom: auto;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Текстовые поля WinUI 3 Style */
+.win-input {
+    width: 100%;
+    height: 32px;
+    background: var(--winui-control-bg);
+    border: 1px solid var(--winui-control-border);
+    border-bottom: 1px solid var(--winui-text-secondary);
+    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: var(--winui-text-main);
+    transition:
+        background-color var(--fluent-timing-fast),
+        border-color var(--fluent-timing-fast);
+    outline: none;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+}
+
+.win-input:hover {
+    border-color: var(--winui-control-border-hover);
+    background: var(--winui-btn-hover);
+}
+
+.win-input:focus {
+    background: var(--winui-card);
+    border-color: var(--winui-control-border);
+    border-bottom: 2px solid var(--winui-accent);
+    padding-bottom: 0px;
+}
+
+/* Кнопки */
+.btn {
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--fluent-timing-fast) ease;
+    outline: none;
+}
+
+.btn-standard {
+    background: var(--winui-btn-standard);
+    color: var(--winui-text-main);
+    border: 1px solid var(--winui-btn-border);
+    border-bottom: 1px solid var(--winui-btn-border-bottom);
+}
+
+.btn-standard:hover {
+    background: var(--winui-btn-hover);
+    border-color: var(--winui-control-border-hover);
+}
+
+.btn-standard:active {
+    background: var(--winui-btn-active);
+    border-color: var(--winui-btn-border);
+}
+
+.btn-accent {
+    background: var(--winui-accent);
+    color: var(--winui-accent-text);
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+
+.btn-accent:hover {
+    background: var(--winui-accent-hover);
+}
+
+.btn-accent:active {
+    background: var(--winui-accent-active);
+}
+
+.btn:disabled {
+    background: rgba(128, 128, 128, 0.05) !important;
+    color: var(--winui-text-disabled) !important;
+    border-color: var(--winui-btn-border) !important;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Секция вывода координат */
+.result-row {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    color: var(--winui-text-secondary);
+    font-size: 14px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.result-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--winui-accent);
+    margin-left: 6px;
+}
+
+/* Панель действий */
+.actions-layout {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 8px;
+    width: 100%;
+}
