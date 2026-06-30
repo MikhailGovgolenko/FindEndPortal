@@ -96,8 +96,8 @@ body,
     /* Меняем hidden на auto, чтобы разрешить скролл при необходимости */
     overflow-x: hidden !important;
     overflow-y: auto !important; 
-    user-select: none !important;
-    -webkit-user-select: none !important;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* Общая подложка приложения */
@@ -262,8 +262,9 @@ body,
     align-items: center;
     color: var(--winui-text-secondary);
     font-size: 14px;
-    margin-top: auto;
     margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .result-value {
@@ -271,6 +272,8 @@ body,
     font-weight: 600;
     color: var(--winui-accent);
     margin-left: 6px;
+    user-select: text !important;
+    -webkit-user-select: text !important;
 }
 
 /* Панель действий */
@@ -278,6 +281,5 @@ body,
     display: flex;
     gap: 12px;
     margin-top: auto;
-    padding-top: 8px;
     width: 100%;
 }
