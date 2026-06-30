@@ -108,23 +108,20 @@ export default function App() {
   // Синхронизация системного акцентного цвета Windows, сброс фона для Mica и блокировка веб-контекста
   useEffect(() => {
     if (isTauri) {
-      document.documentElement.style.setProperty(
-        "--winui-window-bg",
-        "transparent",
-      );
-
+      // Добавляем маркер приложения для стилей
+      document.body.classList.add("is-tauri");
+  
+      document.documentElement.style.setProperty("--winui-window-bg", "transparent");
+      
       const updateAccentColor = async () => {
         try {
           const systemHex = await invoke<string>("get_accent_color");
-          document.documentElement.style.setProperty(
-            "--winui-accent-system",
-            systemHex,
-          );
+          document.documentElement.style.setProperty("--winui-accent-system", systemHex);
         } catch (err) {
           console.warn("System accent color integration skipped.");
         }
       };
-
+  
       updateAccentColor();
       window.addEventListener("focus", updateAccentColor);
       return () => window.removeEventListener("focus", updateAccentColor);
