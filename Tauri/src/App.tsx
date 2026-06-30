@@ -37,8 +37,58 @@ const getSystemLanguage = (): "ru" | "en" => {
   return navLang.toLowerCase().startsWith("ru") ? "ru" : "en";
 };
 
-// Выносим константу за пределы компонента, чтобы избежать ошибок области видимости в TS
 const isTauri = !!(window as any).__TAURI_INTERNALS__;
+
+/**
+ * Математический расчет пересечения двух лучей (Ока Эндера) на клиенте.
+ * В Minecraft угол (yaw) считается от оси Z (0 = юг, 90 = запад, 180 = север, -90/270 = восток).
+ */
+function calculatePortalInJs(
+  x1: number,
+  z1: number,
+  alpha: number,
+  x2: number,
+  z2: number,
+  beta: number,
+): { x: number; z: number } {
+  // Переводим углы Minecraft в радианы для стандартной декартовой системы.
+  // В Minecraft: X_dir = -sin(yaw), Z_dir = cos(yaw)
+  const rad1 = (alpha * Math.PI) / 180.0;
+  const rad2 = (beta * Math.PI) / 180.0;
+
+  const dx1 = -Math.sin(rad1);
+  const dz1 = Math.cos(rad1);
+
+  const dx2 = -Math.sin(rad2);
+  const dz2 = Math.cos(rad2);
+
+  // Определитель матрицы (проверка на параллельность)
+  const det = dx1 * dz2 - dz1 * dx2;
+
+  if (Math.abs(det) < 1e-5) {
+    throw "error_parallel";
+  }
+
+  // Находим параметры пересечения лучей t1 и t2
+  const t1 = ((x2 - x1) * dz2 - (z2 - z1) * dx2) / det;
+  const t2 = ((x2 - x1) * dz1 - (z2 - z1) * dx1) / det;
+
+  // Если t1 или t2 меньше нуля, значит лучи пересекаются «сзади» (в противоположную сторону от броска)
+  if (t1 < 0 || t2 < 0) {
+    throw "error_intersection";
+  }
+
+  // Точка пересечения
+  const resX = x1 + t1 * dx1;
+  const resZ = z1 + t1 * dz1;
+
+  // Проверка на лимиты мира Minecraft (±30,000,000)
+  if (Math.abs(resX) > 30000000 || Math.abs(resZ) > 30000000) {
+    throw "error_out";
+  }
+
+  return { x: Math.round(resX), z: Math.round(resZ) };
+}
 
 export default function App() {
   const lang = getSystemLanguage();
@@ -57,39 +107,37 @@ export default function App() {
 
   // Синхронизация системного акцентного цвета Windows, сброс фона для Mica и блокировка веб-контекста
   useEffect(() => {
-    // Если приложение запущено в Tauri, убираем фон для корректной работы эффекта Mica/Acrylic
     if (isTauri) {
       document.documentElement.style.setProperty(
         "--winui-window-bg",
         "transparent",
       );
+
+      const updateAccentColor = async () => {
+        try {
+          const systemHex = await invoke<string>("get_accent_color");
+          document.documentElement.style.setProperty(
+            "--winui-accent-system",
+            systemHex,
+          );
+        } catch (err) {
+          console.warn("System accent color integration skipped.");
+        }
+      };
+
+      updateAccentColor();
+      window.addEventListener("focus", updateAccentColor);
+      return () => window.removeEventListener("focus", updateAccentColor);
     }
-
-    const updateAccentColor = async () => {
-      try {
-        const systemHex = await invoke<string>("get_accent_color");
-        document.documentElement.style.setProperty(
-          "--winui-accent-system",
-          systemHex,
-        );
-      } catch (err) {
-        console.warn("System accent color integration skipped.");
-      }
-    };
-
-    updateAccentColor();
-    window.addEventListener("focus", updateAccentColor);
-
-    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
-    document.addEventListener("contextmenu", handleContextMenu);
-
-    return () => {
-      window.removeEventListener("focus", updateAccentColor);
-      document.removeEventListener("contextmenu", handleContextMenu);
-    };
   }, []);
 
-  // Вычисление точки пересечения лучей
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
+    document.addEventListener("contextmenu", handleContextMenu);
+    return () => document.removeEventListener("contextmenu", handleContextMenu);
+  }, []);
+
+  // Вычисление точки пересечения лучей прямо в браузере / клиенте
   useEffect(() => {
     const numX1 = parseFloat(x1);
     const numZ1 = parseFloat(z1);
@@ -111,22 +159,21 @@ export default function App() {
       return;
     }
 
-    invoke<{ x: number; z: number }>("calculate_portal", {
-      x1: numX1,
-      z1: numZ1,
-      alpha: numAlpha,
-      x2: numX2,
-      z2: numZ2,
-      beta: numBeta,
-    })
-      .then((result) => {
-        setResX(result.x.toString());
-        setResZ(result.z.toString());
-      })
-      .catch((err: string) => {
-        setResX(t.error);
-        setResZ((t as any)[err] || err);
-      });
+    try {
+      const result = calculatePortalInJs(
+        numX1,
+        numZ1,
+        numAlpha,
+        numX2,
+        numZ2,
+        numBeta,
+      );
+      setResX(result.x.toString());
+      setResZ(result.z.toString());
+    } catch (err: any) {
+      setResX(t.error);
+      setResZ((t as any)[err] || String(err));
+    }
   }, [x1, z1, alpha, x2, z2, beta, t.error]);
 
   const parseMinecraftClipboard = (
@@ -144,19 +191,26 @@ export default function App() {
   };
 
   const handlePaste1 = async () => {
-    const text = await navigator.clipboard.readText();
-    parseMinecraftClipboard(text, setX1, setZ1, setAlpha);
+    try {
+      const text = await navigator.clipboard.readText();
+      parseMinecraftClipboard(text, setX1, setZ1, setAlpha);
+    } catch (e) {
+      console.error("Failed to read clipboard", e);
+    }
   };
 
   const handlePaste2 = async () => {
-    const text = await navigator.clipboard.readText();
-    parseMinecraftClipboard(text, setX2, setZ2, setBeta);
+    try {
+      const text = await navigator.clipboard.readText();
+      parseMinecraftClipboard(text, setX2, setZ2, setBeta);
+    } catch (e) {
+      console.error("Failed to read clipboard", e);
+    }
   };
 
   return (
     <div className="app-container">
       <div className="app-content-wrapper">
-        {/* Сетка ввода */}
         <div className="input-grid">
           {/* Блок первого глаза */}
           <div className="win-card">
@@ -223,7 +277,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Резиновая карточка вывода */}
+        {/* Карточка вывода */}
         <div className="win-card result-card">
           <div className="card-title">{t.label_coordinates}</div>
           <div className="result-row">
@@ -254,9 +308,9 @@ export default function App() {
               setX1("");
               setZ1("");
               setAlpha("");
-              setX2("");
-              setZ2("");
-              setBeta("");
+              x2 && setX2("");
+              z2 && setZ2("");
+              beta && setBeta("");
               setResX("");
               setResZ("");
             }}
