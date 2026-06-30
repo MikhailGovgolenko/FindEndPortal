@@ -24,32 +24,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1. Устанавливаем pnpm ПЕРЕД настройкой Node.js
+      # 1. Устанавливаем pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # или актуальная твоя версия pnpm
+          version: 11 # Синхронизируем с твоей локальной v11.9.0
 
-      # 2. Настраиваем Node.js (перешли на Node 24, так как 20 депрекейтнут)
+      # 2. Настраиваем Node.js и указываем путь к lock-файлу во вложенной папке
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: "pnpm" # Теперь кэш pnpm отработает без ошибок
+          cache: "pnpm"
+          cache-dependency-path: "./Tauri/pnpm-lock.yaml" # Путь к твоему lock-файлу
 
+      # 3. Ставим зависимости внутри папки Tauri
       - name: Install dependencies
         run: pnpm install
+        working-directory: ./Tauri
 
+      # 4. Собираем проект внутри папки Tauri
       - name: Build frontend
         run: pnpm run build
+        working-directory: ./Tauri
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      # 5. Загружаем артефакт (Vite собирает в Tauri/dist)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dist"
+          path: "./Tauri/dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
