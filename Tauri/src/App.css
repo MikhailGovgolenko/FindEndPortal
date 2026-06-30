@@ -90,11 +90,12 @@
 html,
 body,
 #root {
-    /* Используем переменную, которая динамически сбрасывается в transparent через JS в Tauri */
     background: var(--winui-window-bg) !important;
     width: 100vw;
     height: 100vh;
-    overflow: hidden !important;
+    /* Меняем hidden на auto, чтобы разрешить скролл при необходимости */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
     user-select: none !important;
     -webkit-user-select: none !important;
 }
@@ -104,10 +105,10 @@ body,
     padding: 24px;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh; /* Меняем фиксированную height на min-height */
     width: 100vw;
     box-sizing: border-box;
-    overflow: hidden;
+    /* Убираем overflow: hidden, чтобы контент мог скроллиться */
 }
 
 /* Контроллер контента (генерирует внешние пустоты при сильном растяжении окон) */
