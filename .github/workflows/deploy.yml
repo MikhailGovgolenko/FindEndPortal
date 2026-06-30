@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Сюда укажи свою главную ветку (main или master)
+      - main # Твоя главная ветка
 
 permissions:
   contents: read
@@ -24,17 +24,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 1. Устанавливаем pnpm ПЕРЕД настройкой Node.js
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # или актуальная твоя версия pnpm
+
+      # 2. Настраиваем Node.js (перешли на Node 24, так как 20 депрекейтнут)
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm' # Замени на 'pnpm' или 'yarn', если используешь их
+          node-version: 24
+          cache: "pnpm" # Теперь кэш pnpm отработает без ошибок
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Build frontend
-        run: npm run build
+        run: pnpm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -42,7 +49,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Стандартная папка сборки Vite
+          path: "./dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
