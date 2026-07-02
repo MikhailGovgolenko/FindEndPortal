@@ -212,7 +212,7 @@ body {
 .btn {
     min-height: 32px; /* Поменяли height на min-height, чтобы кнопка росла по высоте при переносе текста */
     height: auto; 
-    padding: 6px 16px; /* Внутренние отступы для аккуратного текста в несколько строк */
+    padding: 8px 16px; /* Увеличенный вертикальный паддинг для больше пространства */
     border-radius: 4px;
     font-size: 14px;
     font-weight: 400;
@@ -227,14 +227,21 @@ body {
     white-space: normal; /* Разрешаем тексту переноситься на новую строку */
     text-align: center;
     word-break: break-word; /* Безопасный перенос длинных слов */
-    flex: 1 1 0px; /* Кнопки будут делить пространство поровну и адаптироваться */
+    flex: 1 1 10px; /* Кнопки будут делить пространство поровну и адаптироваться */
+    line-height: 1.2; /* Правильное расстояние между строками */
 }
+
 
 .btn-standard {
     background: var(--winui-btn-standard);
     color: var(--winui-text-main);
     border: 1px solid var(--winui-btn-border);
     border-bottom: 1px solid var(--winui-btn-border-bottom);
+}
+
+.win-card .btn-standard {
+    width: 100%;
+    flex: none;
 }
 
 .btn-standard:hover {
