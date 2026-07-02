@@ -30,13 +30,13 @@ jobs:
         with:
           version: 11 # Синхронизируем с твоей локальной v11.9.0
 
-      # 2. Настраиваем Node.js и указываем путь к lock-файлу во вложенной папке
+      # 2. Настраиваем Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: "pnpm"
-          cache-dependency-path: "./Tauri/pnpm-lock.yaml" # Путь к твоему lock-файлу
+          cache-dependency-path: "./Tauri/pnpm-lock.yaml"
 
       # 3. Ставим зависимости внутри папки Tauri
       - name: Install dependencies
@@ -48,15 +48,18 @@ jobs:
         run: pnpm run build
         working-directory: ./Tauri
 
+      # Обновили до v5
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
-      # 5. Загружаем артефакт (Vite собирает в Tauri/dist)
+      # 5. Загружаем артефакт (Добавили retention-days для фикса ошибки дубликатов)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./Tauri/dist"
+          retention-days: 1 # Исправляет баг с наложением старых артефактов
 
+      # Деплой
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
