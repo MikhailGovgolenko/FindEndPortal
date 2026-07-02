@@ -1,0 +1,14 @@
+{
+  "first_eye": "First Eye of Ender",
+  "second_eye": "Second Eye of Ender",
+  "label_coordinates": "Stronghold Coordinates",
+  "btn_command": "Copy /tp command",
+  "btn_clear": "Clear Fields",
+  "alpha": "Throw Angle 1",
+  "beta": "Throw Angle 2",
+  "paste": "Paste from F3+C",
+  "error": "Error",
+  "error_parallel": "Rays are parallel",
+  "error_intersection": "Rays do not intersect",
+  "error_out": "Out of bounds"
+}
