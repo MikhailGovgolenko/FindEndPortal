@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "findendportal",
+  "productName": "FindEndPortal",
   "version": "1.6.0",
   "identifier": "FindEndPortal",
   "build": {
@@ -10,19 +10,19 @@
     "frontendDist": "../dist"
   },
   "app": {
-      "windows": [
-        {
-          "title": "FindEndPortal",
-          "width": 560,
-          "height": 440,
-          "resizable": true,
-          "transparent": true
-        }
-      ],
-      "security": {
-        "csp": null
+    "windows": [
+      {
+        "title": "FindEndPortal",
+        "width": 560,
+        "height": 440,
+        "resizable": true,
+        "transparent": true
       }
-    },
+    ],
+    "security": {
+      "csp": null
+    }
+  },
   "bundle": {
     "active": true,
     "targets": "all",
