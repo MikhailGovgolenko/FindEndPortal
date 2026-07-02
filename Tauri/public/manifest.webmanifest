@@ -9,19 +9,19 @@
   "categories": ["utilities"],
   "icons": [
     {
-      "src": "/FindEndPortal/favicon.png",
+      "src": "/FindEndPortal/favicon-v2.png",
       "sizes": "400x400",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/FindEndPortal/favicon.png",
+      "src": "/FindEndPortal/favicon-v2.png",
       "sizes": "400x400",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/FindEndPortal/apple-touch-icon.png",
+      "src": "/FindEndPortal/apple-touch-icon-v2.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"

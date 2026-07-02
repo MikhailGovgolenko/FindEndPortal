@@ -2,38 +2,25 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-
-        <!-- Favicon и иконки (Добавили жесткий cache busting ?v=2) -->
-        <link
-            rel="icon"
-            type="image/png"
-            href="/FindEndPortal/favicon.png?v=2"
-        />
-        <link
-            rel="apple-touch-icon"
-            href="/FindEndPortal/apple-touch-icon.png?v=2"
-        />
-
-        <!-- Web App Manifest (Манифесту тоже обновляем версию) -->
-        <link rel="manifest" href="/FindEndPortal/manifest.webmanifest?v=2" />
-
+    
+        <!-- Новые физические пути, которые заставят Safari забыть про старый логотип Tauri -->
+        <link rel="icon" type="image/png" href="/FindEndPortal/favicon-v2.png" />
+        <link rel="apple-touch-icon" href="/FindEndPortal/apple-touch-icon-v2.png" />
+    
+        <!-- Чистый путь к манифесту -->
+        <link rel="manifest" href="/FindEndPortal/manifest.webmanifest" />
+    
         <!-- PWA мета теги -->
-        <meta name="application-name" content="FindEndPortal." />
+        <meta name="application-name" content="FindEndPortal" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta
-            name="apple-mobile-web-app-status-bar-style"
-            content="black-translucent"
-        />
-        <meta name="apple-mobile-web-app-title" content="FindEndPortal" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!-- Добавили точку, чтобы сбросить кэш PWA-клиента внутри iOS -->
+        <meta name="apple-mobile-web-app-title" content="FindEndPortal." />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="supported-color-schemes" content="light dark" />
-
-        <!-- Viewport -->
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-        />
-
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    
         <title>FindEndPortal</title>
     </head>
 
