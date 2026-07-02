@@ -32,6 +32,26 @@ const translations = {
   },
 };
 
+// Регулярные выражения для валидации
+const COORDINATES_REGEX = new RegExp(
+  "^(" +
+  "([+-]?0*[0-9]{1,7}(\\.[0-9]*)?|\\.[0-9]+)|" +
+  "([+-]?0*1[0-9]{7}(\\.[0-9]*)?)|" +
+  "([+-]?0*2[0-8][0-9]{6}(\\.[0-9]*)?)|" +
+  "([+-]?0*29[0-8][0-9]{5}(\\.[0-9]*)?)|" +
+  "([+-]?0*299[0-8][0-9]{4}(\\.[0-9]*)?)|" +
+  "([+-]?0*2999[0-8][0-9]{3}(\\.[0-9]*)?)|" +
+  "([+-]?0*29999[0-8][0-9]{2}(\\.[0-9]*)?)|" +
+  "([+-]?0*299999[0-7][0-9](\\.[0-9]*)?)|" +
+  "(\\-0*2999998[0-3](\\.[0-9]*)?)|" +
+  "([+]?0*2999998[0-2](\\.[0-9]*)?)|" +
+  "(\\-0*29999984(\\.[0]*)?)|" +
+  "([+]?0*29999983(\\.[0]*)?)" +
+  ")$"
+);
+
+const ANGLE_REGEX = new RegExp("^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)$");
+
 const getSystemLanguage = (): "ru" | "en" => {
   const navLang = navigator.language || "en";
   return navLang.toLowerCase().startsWith("ru") ? "ru" : "en";
@@ -217,19 +237,34 @@ export default function App() {
                 className="win-input"
                 placeholder="X"
                 value={x1}
-                onChange={(e) => setX1(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "" || COORDINATES_REGEX.test(val)) {
+                    setX1(val);
+                  }
+                }}
               />
               <input
                 className="win-input"
                 placeholder="Z"
                 value={z1}
-                onChange={(e) => setZ1(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "" || COORDINATES_REGEX.test(val)) {
+                    setZ1(val);
+                  }
+                }}
               />
               <input
                 className="win-input"
                 placeholder={t.alpha}
                 value={alpha}
-                onChange={(e) => setAlpha(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "" || ANGLE_REGEX.test(val)) {
+                    setAlpha(val);
+                  }
+                }}
               />
             </div>
             <button
@@ -249,19 +284,34 @@ export default function App() {
                 className="win-input"
                 placeholder="X"
                 value={x2}
-                onChange={(e) => setX2(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "" || COORDINATES_REGEX.test(val)) {
+                    setX2(val);
+                  }
+                }}
               />
               <input
                 className="win-input"
                 placeholder="Z"
                 value={z2}
-                onChange={(e) => setZ2(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "" || COORDINATES_REGEX.test(val)) {
+                    setZ2(val);
+                  }
+                }}
               />
               <input
                 className="win-input"
                 placeholder={t.beta}
                 value={beta}
-                onChange={(e) => setBeta(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "" || ANGLE_REGEX.test(val)) {
+                    setBeta(val);
+                  }
+                }}
               />
             </div>
             <button
