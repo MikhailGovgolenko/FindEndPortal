@@ -101,7 +101,7 @@ pub fn run() {
             if let Some(window) = app.get_webview_window("main") {
                 let _ = window.set_min_size(Some(tauri::Size::Logical(tauri::LogicalSize {
                     width: 560.0,
-                    height: 420.0,
+                    height: 440.0,
                 })));
 
                 #[cfg(target_os = "windows")]

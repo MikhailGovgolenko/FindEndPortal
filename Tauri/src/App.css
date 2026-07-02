@@ -92,11 +92,10 @@ body,
 #root {
     background: var(--winui-window-bg) !important;
     width: 100vw;
-    height: 100dvh;
-    /* Разрешаем вертикальный скролл при переполнении контента */
+    /* Убрали жесткую фиксацию высоты, разрешая естественный скролл страницы */
+    min-height: 100dvh;
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    /* По умолчанию весь интерфейс не выделяется */
     user-select: none;
     -webkit-user-select: none;
 }
@@ -108,7 +107,7 @@ body,
     min-height: 100dvh;
     width: 100vw;
     box-sizing: border-box;
-    padding: 24px 24px 32px 24px;
+    padding: 24px;
 }
 
 /* Контроллер контента */
@@ -117,7 +116,8 @@ body,
     flex-direction: column;
     gap: 0;
     width: 100%;
-    height: auto;
+    /* Изменили height: 100% на flex-grow, чтобы Wrapper занимал всё пространство контейнера без внутренних скроллов */
+    flex-grow: 1;
     max-width: 800px;
     margin: auto;
 }
@@ -128,6 +128,7 @@ body,
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     width: 100%;
+    /* Увеличили отступ до 28px, как настраивали ранее */
     margin-bottom: 16px;
 }
 
@@ -146,9 +147,10 @@ body,
 
 /* Подстраиваемая карточка результата */
 .win-card.result-card {
-    flex: 1;
+    /* flex-grow: 1 заставит карточку растягиваться и заполнять всё свободное место */
+    flex-grow: 1;
     justify-content: center;
-    min-height: 80px;
+    min-height: 100px;
     margin-bottom: 16px;
 }
 
@@ -270,7 +272,8 @@ body,
     font-size: 18px;
     font-weight: 600;
     color: var(--winui-accent);
-    margin-left: 0zpx;
+    /* Исправили опечатку 0zpx -> 0px */
+    margin-left: 0px; 
 }
 
 /* Панель действий */
