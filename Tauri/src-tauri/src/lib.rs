@@ -93,6 +93,11 @@ fn get_accent_color() -> Result<String, String> {
     Ok("#0078D4".to_string())
 }
 
+#[tauri::command]
+fn show_window(window: tauri::WebviewWindow) {
+    let _ = window.show();
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -109,22 +114,21 @@ pub fn run() {
                     use window_vibrancy::apply_mica;
                     let window_clone = window.clone();
                     let _ = window.run_on_main_thread(move || {
-                        // Точно как в твоем PDF-Converter проекте
+                        // Применяем Mica-эффект, пока окно еще скрыто
                         let _ = apply_mica(&window_clone, None);
-                        let _ = window_clone.show();
+                        // ИСПРАВЛЕНИЕ: Убрали отсюда принудительный window_clone.show()
                     });
                 }
                 
-                #[cfg(not(target_os = "windows"))]
-                {
-                    let _ = window.show();
-                }
+                // ИСПРАВЛЕНИЕ: Полностью убрали блок #[cfg(not(target_os = "windows"))], 
+                // который вызывал window.show() на других операционных системах.
             }
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
             calculate_portal,
-            get_accent_color
+            get_accent_color,
+            show_window
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

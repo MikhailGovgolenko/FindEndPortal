@@ -71,8 +71,6 @@ function calculatePortalInJs(
   z2: number,
   beta: number,
 ): { x: number; z: number } {
-  // Переводим углы Minecraft в радианы для стандартной декартовой системы.
-  // В Minecraft: X_dir = -sin(yaw), Z_dir = cos(yaw)
   const rad1 = (alpha * Math.PI) / 180.0;
   const rad2 = (beta * Math.PI) / 180.0;
 
@@ -82,27 +80,22 @@ function calculatePortalInJs(
   const dx2 = -Math.sin(rad2);
   const dz2 = Math.cos(rad2);
 
-  // Определитель матрицы (проверка на параллельность)
   const det = dx1 * dz2 - dz1 * dx2;
 
   if (Math.abs(det) < 1e-5) {
     throw "error_parallel";
   }
 
-  // Находим параметры пересечения лучей t1 и t2
   const t1 = ((x2 - x1) * dz2 - (z2 - z1) * dx2) / det;
   const t2 = ((x2 - x1) * dz1 - (z2 - z1) * dx1) / det;
 
-  // Если t1 или t2 меньше нуля, значит лучи пересекаются «сзади» (в противоположную сторону от броска)
   if (t1 < 0 || t2 < 0) {
     throw "error_intersection";
   }
 
-  // Точка пересечения
   const resX = x1 + t1 * dx1;
   const resZ = z1 + t1 * dz1;
 
-  // Проверка на лимиты мира Minecraft (±30,000,000)
   if (Math.abs(resX) > 30000000 || Math.abs(resZ) > 30000000) {
     throw "error_out";
   }
@@ -125,28 +118,43 @@ export default function App() {
   const [resX, setResX] = useState<string>("");
   const [resZ, setResZ] = useState<string>("");
 
-  // Синхронизация системного акцентного цвета Windows, сброс фона для Mica и блокировка веб-контекста
-  useEffect(() => {
-    if (isTauri) {
-      // Добавляем маркер приложения для стилей
-      document.body.classList.add("is-tauri");
+  // Синхронизация системного акцентного цвета Windows, сброс фона для Mica и ПОКАЗ окна без вспышек
+    useEffect(() => {
+      if (isTauri) {
+        document.body.classList.add("is-tauri");
+        document.documentElement.style.setProperty("--winui-window-bg", "transparent");
+        
+        const initTauriWindow = async () => {
+          // 1. Сначала запрашиваем системный акцентный цвет из WinReg
+          try {
+            const systemHex = await invoke<string>("get_accent_color");
+            document.documentElement.style.setProperty("--winui-accent-system", systemHex);
+          } catch (err) {
+            console.warn("System accent color integration skipped.");
+          }
+          
+          // 2. Стили применились, Mica готова в фоне — даём команду Rust отобразить окно
+          try {
+            await invoke("show_window");
+          } catch (err) {
+            console.error("Failed to show window via Rust command:", err);
+          }
+        };
+    
+        initTauriWindow();
   
-      document.documentElement.style.setProperty("--winui-window-bg", "transparent");
-      
-      const updateAccentColor = async () => {
-        try {
-          const systemHex = await invoke<string>("get_accent_color");
-          document.documentElement.style.setProperty("--winui-accent-system", systemHex);
-        } catch (err) {
-          console.warn("System accent color integration skipped.");
-        }
-      };
+        // Слушатель фокуса для динамической перезагрузки цвета
+        const updateAccentColor = async () => {
+          try {
+            const systemHex = await invoke<string>("get_accent_color");
+            document.documentElement.style.setProperty("--winui-accent-system", systemHex);
+          } catch (err) {}
+        };
   
-      updateAccentColor();
-      window.addEventListener("focus", updateAccentColor);
-      return () => window.removeEventListener("focus", updateAccentColor);
-    }
-  }, []);
+        window.addEventListener("focus", updateAccentColor);
+        return () => window.removeEventListener("focus", updateAccentColor);
+      }
+    }, []);
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => e.preventDefault();
@@ -154,7 +162,7 @@ export default function App() {
     return () => document.removeEventListener("contextmenu", handleContextMenu);
   }, []);
 
-  // Вычисление точки пересечения лучей прямо в браузере / клиенте
+  // Автоматический расчет точки пересечения лучей на лету
   useEffect(() => {
     const numX1 = parseFloat(x1);
     const numZ1 = parseFloat(z1);
