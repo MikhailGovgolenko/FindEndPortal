@@ -88,26 +88,22 @@
 }
 
 html,
-body {
+body,
+#root {
     background: var(--winui-window-bg) !important;
-    width: 100%;
+    width: 100vw;
     /* Убрали жесткую фиксацию высоты, разрешая естественный скролл страницы */
     min-height: 100dvh;
     overflow-x: hidden !important;
-    overflow-y: auto !important;
     user-select: none;
     -webkit-user-select: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
-#root {
-    background: var(--winui-window-bg) !important;
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden !important;
-    user-select: none;
-    -webkit-user-select: none;
+html,
+body {
+    overflow-y: auto !important;
 }
 
 /* Общая подложка приложения */
@@ -115,9 +111,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    width: 100%;
+    width: 100vw;
     box-sizing: border-box;
     padding: 24px;
+    overflow: visible;
 }
 
 /* Контроллер контента */
