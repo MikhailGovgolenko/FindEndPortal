@@ -3,19 +3,18 @@
     <head>
         <meta charset="UTF-8" />
     
-        <!-- Новые физические пути, которые заставят Safari забыть про старый логотип Tauri -->
+        <!-- Оставляем только фавикон для вкладки браузера -->
         <link rel="icon" type="image/png" href="/FindEndPortal/favicon-v2.png" />
-        <link rel="apple-touch-icon" href="/FindEndPortal/apple-touch-icon-v2.png" />
     
-        <!-- Чистый путь к манифесту -->
+        <!-- Манифест, который теперь полностью управляет иконкой на экране Домой -->
         <link rel="manifest" href="/FindEndPortal/manifest.webmanifest" />
     
         <!-- PWA мета теги -->
         <meta name="application-name" content="FindEndPortal" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <!-- Добавили точку, чтобы сбросить кэш PWA-клиента внутри iOS -->
-        <meta name="apple-mobile-web-app-title" content="FindEndPortal." />
+        <!-- Слегка меняем имя, чтобы iOS гарантированно пересоздала PWA-клиент -->
+        <meta name="apple-mobile-web-app-title" content="FindEndPortal " /> 
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="supported-color-schemes" content="light dark" />
     

@@ -19,12 +19,6 @@
       "sizes": "400x400",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "/FindEndPortal/apple-touch-icon-v2.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
     }
   ],
   "prefer_related_applications": false

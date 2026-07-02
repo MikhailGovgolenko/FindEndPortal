@@ -1,21 +1,23 @@
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2'; // Переключаем на v2, чтобы снести старый кэш findendportal-v1
 const CACHE_NAME = `findendportal-${CACHE_VERSION}`;
 
+// В массиве оставляем только те файлы, которые РЕАЛЬНО лежат в твоей папке Tauri/public
 const FILES_TO_CACHE = [
   '/FindEndPortal/',
   '/FindEndPortal/index.html',
   '/FindEndPortal/manifest.webmanifest',
-  '/FindEndPortal/favicon.png',
-  '/FindEndPortal/apple-touch-icon.png'
+  '/FindEndPortal/favicon-v2.png' // Указываем актуальное имя новой иконки
 ];
 
 // Install - кеширует необходимые файлы
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(FILES_TO_CACHE).catch(err => {
-        console.warn('Cache.addAll error:', err);
-      });
+      return cache.addAll(FILES_TO_CACHE);
+    }).then(() => {
+      return self.skipWaiting(); // Принудительно заставляем новый воркер активироваться, не дожидаясь закрытия вкладок
+    }).catch(err => {
+      console.warn('Cache.addAll error (проверь, все ли файлы существуют в public):', err);
     })
   );
 });
@@ -59,17 +61,19 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Activate - очищает старые кеши
+// Activate - полностью очищает старое хранилище findendportal-v1
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
+            return caches.delete(cacheName); // Удаляем v1 намертво
           }
         })
       );
+    }).then(() => {
+      return self.clients.claim(); // Сразу берем под контроль все открытые страницы
     })
   );
 });
