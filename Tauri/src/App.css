@@ -32,6 +32,8 @@
     --winui-control-border: rgba(0, 0, 0, 0.15);
     --winui-control-border-hover: rgba(0, 0, 0, 0.24);
     --fluent-timing-fast: 0.08s cubic-bezier(0.1, 0.9, 0.2, 1);
+
+    color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,6 +73,8 @@
         --winui-control-bg: rgba(30, 30, 30, 0.7);
         --winui-control-border: rgba(255, 255, 255, 0.1);
         --winui-control-border-hover: rgba(255, 255, 255, 0.18);
+
+        color-scheme: dark;
     }
 }
 
