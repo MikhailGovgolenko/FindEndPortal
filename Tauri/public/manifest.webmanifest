@@ -1,6 +1,6 @@
 {
   "name": "FindEndPortal",
-  "short_name": "EndPortal",
+  "short_name": "FindEndPortal",
   "description": "Find Minecraft Stronghold using Eyes of Ender",
   "start_url": "/",
   "scope": "/",
@@ -33,4 +33,3 @@
   ],
   "prefer_related_applications": false
 }
-
