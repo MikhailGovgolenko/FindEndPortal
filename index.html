@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        
+        <!-- Favicon и иконки -->
+        <link rel="icon" type="image/png" href="/FindEndPortal/favicon.png" />
+        <link rel="apple-touch-icon" href="/FindEndPortal/apple-touch-icon.png" />
+        
+        <!-- Web App Manifest -->
+        <link rel="manifest" href="/FindEndPortal/manifest.webmanifest" />
+        
+        <!-- PWA мета теги -->
+        <meta name="application-name" content="FindEndPortal" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="FindEndPortal" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="supported-color-schemes" content="light dark" />
+        
+        <!-- Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+        
+        <title>FindEndPortal</title>
+      <script type="module" crossorigin src="/FindEndPortal/assets/index-CeNW1olK.js"></script>
+      <link rel="stylesheet" crossorigin href="/FindEndPortal/assets/index-C3GfdaM6.css">
+    </head>
+
+    <body>
+        <div id="root"></div>
+    
+        <!-- Register Service Worker for PWA support -->
+        <script>
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/FindEndPortal/sw.js', {
+              scope: '/FindEndPortal/'
+            }).catch(err => console.warn('SW registration failed:', err));
+          }
+        </script>
+    </body>
+</html>
