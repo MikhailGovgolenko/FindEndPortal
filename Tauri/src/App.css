@@ -88,14 +88,24 @@
 }
 
 html,
-body,
-#root {
+body {
     background: var(--winui-window-bg) !important;
-    width: 100vw;
+    width: 100%;
     /* Убрали жесткую фиксацию высоты, разрешая естественный скролл страницы */
     min-height: 100dvh;
     overflow-x: hidden !important;
     overflow-y: auto !important;
+    user-select: none;
+    -webkit-user-select: none;
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    background: var(--winui-window-bg) !important;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden !important;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -105,7 +115,7 @@ body,
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     padding: 24px;
 }
