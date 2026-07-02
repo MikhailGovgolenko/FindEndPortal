@@ -29,5 +29,14 @@
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
+    
+        <!-- Register Service Worker for PWA support -->
+        <script>
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/FindEndPortal/sw.js', {
+              scope: '/FindEndPortal/'
+            }).catch(err => console.warn('SW registration failed:', err));
+          }
+        </script>
     </body>
 </html>

@@ -166,10 +166,12 @@ body {
 }
 
 .card-title {
-    font-size: 13px;
+    font-size: 12.5px;         /* Микро-уменьшение для гарантированного прохождения лимитов */
     font-weight: 600;
     color: var(--winui-text-main);
     margin-bottom: 12px;
+    letter-spacing: -0.025em;  /* Аккуратно сужает буквы на iOS, убирая "размашистость" Apple-шрифта */
+    white-space: nowrap;       /* Запрещает перенос: заголовок останется идеальной строкой */
 }
 
 .result-card .card-title {

@@ -2,16 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Single Page App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FindEndPortal</title>
     <script type="text/javascript">
-      var segmentCount = 0;
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        '/FindEndPortal/?p=/' + l.pathname.slice(1).split('/').slice(segmentCount).join('/')
-      );
+      (function() {
+        var l = window.location;
+        var path = l.pathname;
+        
+        // Если мы на /FindEndPortal/something и это 404, редиректим на /FindEndPortal/?p=/something
+        if (path.startsWith('/FindEndPortal/') && path !== '/FindEndPortal/' && path !== '/FindEndPortal/index.html') {
+          var pathSegments = path.slice('/FindEndPortal/'.length);
+          l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            '/FindEndPortal/?p=/' + pathSegments
+          );
+        }
+        // Если мы на корне /FindEndPortal, перенаправим на index.html
+        else if (path === '/FindEndPortal/') {
+          l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            '/FindEndPortal/index.html'
+          );
+        }
+      })();
     </script>
   </head>
   <body>
+    <!-- Fallback для случая если JS отключен -->
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/FindEndPortal/">
+    </noscript>
   </body>
 </html>
