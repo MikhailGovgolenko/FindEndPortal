@@ -117,7 +117,10 @@ body {
     min-height: 100dvh;
     width: 100vw;
     box-sizing: border-box;
-    padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+    padding-top: calc(env(safe-area-inset-top) + 24px); 
+        padding-right: max(24px, env(safe-area-inset-right));
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+        padding-left: max(24px, env(safe-area-inset-left));
     overflow: visible;
 }
 
