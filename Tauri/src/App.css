@@ -210,8 +210,9 @@ body {
 
 /* Кнопки */
 .btn {
-    height: 32px;
-    padding: 0 16px;
+    min-height: 32px; /* Поменяли height на min-height, чтобы кнопка росла по высоте при переносе текста */
+    height: auto; 
+    padding: 6px 16px; /* Внутренние отступы для аккуратного текста в несколько строк */
     border-radius: 4px;
     font-size: 14px;
     font-weight: 400;
@@ -221,6 +222,12 @@ body {
     justify-content: center;
     transition: all var(--fluent-timing-fast) ease;
     outline: none;
+    
+    /* Управление длинным текстом */
+    white-space: normal; /* Разрешаем тексту переноситься на новую строку */
+    text-align: center;
+    word-break: break-word; /* Безопасный перенос длинных слов */
+    flex: 1 1 0px; /* Кнопки будут делить пространство поровну и адаптироваться */
 }
 
 .btn-standard {
