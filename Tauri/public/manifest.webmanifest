@@ -2,8 +2,8 @@
   "name": "FindEndPortal",
   "short_name": "FindEndPortal",
   "description": "Find Minecraft Stronghold using Eyes of Ender",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/FindEndPortal/",
+  "scope": "/FindEndPortal/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#ffffff",
@@ -11,19 +11,19 @@
   "categories": ["utilities"],
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/FindEndPortal/favicon.png",
       "sizes": "400x400",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/favicon.png",
+      "src": "/FindEndPortal/favicon.png",
       "sizes": "400x400",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/FindEndPortal/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
