@@ -2,25 +2,61 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-    
+
         <!-- Оставляем только фавикон для вкладки браузера -->
         <link rel="icon" type="image/png" href="/FindEndPortal/favicon-v2.png" />
-    
+
         <!-- Манифест, который теперь полностью управляет иконкой на экране Домой -->
         <link rel="manifest" href="/FindEndPortal/manifest.webmanifest" />
-    
+
         <!-- PWA мета теги -->
         <meta name="application-name" content="FindEndPortal" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <!-- Слегка меняем имя, чтобы iOS гарантированно пересоздала PWA-клиент -->
-        <meta name="apple-mobile-web-app-title" content="FindEndPortal " /> 
+        <meta name="apple-mobile-web-app-title" content="FindEndPortal" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="supported-color-schemes" content="light dark" />
-    
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    
+
         <title>FindEndPortal</title>
+
+        <!-- Description -->
+        <meta
+            name="description"
+            content="Tool for locating Minecraft strongholds from Eye of Ender throws"
+        />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="FindEndPortal" />
+        <meta property="og:site_name" content="FindEndPortal" />
+        <meta
+            property="og:description"
+            content="Tool for locating Minecraft strongholds from Eye of Ender throws."
+        />
+        <meta
+            property="og:image"
+            content="https://mikhailgovgolenko.github.io/FindEndPortal/favicon-v2.png"
+        />
+        <meta
+            property="og:url"
+            content="https://mikhailgovgolenko.github.io/FindEndPortal/"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FindEndPortal" />
+        <meta
+            name="twitter:description"
+            content="Tool for locating Minecraft strongholds from Eye of Ender throws"
+        />
+        <meta
+            name="twitter:image"
+            content="https://mikhailgovgolenko.github.io/FindEndPortal/preview.png"
+        />
     </head>
 
     <body>
@@ -30,14 +66,11 @@
         <!-- Register Service Worker for PWA support -->
         <script>
             if ("serviceWorker" in navigator) {
-                // Добавляем ?v=2 к скрипту сервис-воркера.
-                // Браузер увидит изменение строки, принудительно переустановит sw.js и очистит старый кэш картинок!
                 navigator.serviceWorker
                     .register("/FindEndPortal/sw.js?v=2", {
                         scope: "/FindEndPortal/",
                     })
                     .then((reg) => {
-                        // Если воркер обновился, заставляем его сразу активироваться
                         reg.update();
                     })
                     .catch((err) =>
