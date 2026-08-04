@@ -24,13 +24,13 @@
     --winui-text-secondary: rgba(0, 0, 0, 0.61);
     --winui-text-disabled: rgba(0, 0, 0, 0.36);
     --winui-btn-standard: rgba(255, 255, 255, 0.7);
-    --winui-btn-hover: rgba(249, 249, 249, 0.8);
-    --winui-btn-active: rgba(245, 245, 245, 0.6);
-    --winui-btn-border: rgba(0, 0, 0, 0.12);
-    --winui-btn-border-bottom: rgba(0, 0, 0, 0.24);
-    --winui-control-bg: rgba(255, 255, 255, 0.6);
-    --winui-control-border: rgba(0, 0, 0, 0.15);
-    --winui-control-border-hover: rgba(0, 0, 0, 0.24);
+    --winui-btn-hover: rgba(249, 249, 249, 0.7);
+    --winui-btn-active: rgba(245, 245, 245, 0.5);
+    --winui-btn-border: rgba(0, 0, 0, 0.1);
+    --winui-btn-border-bottom: rgba(0, 0, 0, 0.2);
+    --winui-control-bg: rgba(255, 255, 255, 0.7);
+    --winui-control-border: rgba(0, 0, 0, 0.1);
+    --winui-control-border-hover: rgba(0, 0, 0, 0.16);
     --fluent-timing-fast: 0.08s cubic-bezier(0.1, 0.9, 0.2, 1);
 
     color-scheme: light;
@@ -67,11 +67,11 @@
         --winui-btn-standard: rgba(255, 255, 255, 0.05);
         --winui-btn-hover: rgba(255, 255, 255, 0.09);
         --winui-btn-active: rgba(255, 255, 255, 0.03);
-        --winui-btn-border: rgba(255, 255, 255, 0.08);
-        --winui-btn-border-bottom: rgba(255, 255, 255, 0.12);
+        --winui-btn-border: rgba(255, 255, 255, 0.06);
+        --winui-btn-border-bottom: rgba(255, 255, 255, 0.09);
         --winui-control-bg: rgba(30, 30, 30, 0.7);
-        --winui-control-border: rgba(255, 255, 255, 0.1);
-        --winui-control-border-hover: rgba(255, 255, 255, 0.18);
+        --winui-control-border: rgba(255, 255, 255, 0.08);
+        --winui-control-border-hover: rgba(255, 255, 255, 0.15);
 
         color-scheme: dark;
     }
@@ -114,12 +114,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
-    padding-top: calc(env(safe-area-inset-top) + 24px); 
-        padding-right: max(24px, env(safe-area-inset-right));
-        padding-bottom: max(24px, env(safe-area-inset-bottom));
-        padding-left: max(24px, env(safe-area-inset-left));
+    padding: calc(24px + env(safe-area-inset-top, 0px)) calc(24px + env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) calc(24px + env(safe-area-inset-left, 0px));
+    max-width: calc(800px + env(safe-area-inset-left, 0px) + env(safe-area-inset-right, 0px));
+    margin: 0 auto;
     overflow: visible;
 }
 
@@ -131,8 +130,6 @@ body {
     width: 100%;
     /* Изменили height: 100% на flex-grow, чтобы Wrapper занимал всё пространство контейнера без внутренних скроллов */
     flex-grow: 1;
-    max-width: 800px;
-    margin: auto;
 }
 
 /* Сетка карточек ввода */
