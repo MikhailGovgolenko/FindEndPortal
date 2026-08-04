@@ -1,0 +1,28 @@
+# Node
+node_modules/
+dist/
+.vite/
+
+# Rust
+tauri/src-tauri/target/
+
+# Tauri
+tauri/src-tauri/gen/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# pnpm
+.npmrc
