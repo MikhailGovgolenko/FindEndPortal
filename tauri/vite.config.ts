@@ -8,8 +8,8 @@ const host = process.env.TAURI_DEV_HOST;
 export default defineConfig({
   plugins: [react()],
 
-  // Для GitHub Pages используем имя репо, для Tauri используется /
-  base: process.env.TAURI_ENV_PLATFORM ? '/' : '/FindEndPortal/',
+  // Для web-версии на custom domain и для Tauri используется корень /
+  base: '/',
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   clearScreen: false,

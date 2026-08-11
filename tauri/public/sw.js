@@ -1,12 +1,12 @@
-const CACHE_VERSION = 'v3'; // Переключаем на v3, чтобы снести старый кэш findendportal-v2
+const CACHE_VERSION = 'v4'; // Переключаем на v4 для нового custom domain (новый origin — свежий кэш)
 const CACHE_NAME = `findendportal-${CACHE_VERSION}`;
 
 // В массиве оставляем только те файлы, которые РЕАЛЬНО лежат в твоей папке Tauri/public
 const FILES_TO_CACHE = [
-  '/FindEndPortal/',
-  '/FindEndPortal/index.html',
-  '/FindEndPortal/manifest.webmanifest',
-  '/FindEndPortal/favicon-v2.png' // Указываем актуальное имя новой иконки
+  '/',
+  '/index.html',
+  '/manifest.webmanifest',
+  '/favicon-v2.png' // Указываем актуальное имя новой иконки
 ];
 
 // Install - кеширует необходимые файлы
@@ -27,8 +27,8 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Если в пути нет /FindEndPortal/, просто передаём запрос
-  if (!url.pathname.startsWith('/FindEndPortal/')) {
+  // Если путь не начинается с корня приложения, просто передаём запрос
+  if (!url.pathname.startsWith('/')) {
     return;
   }
 
@@ -45,8 +45,8 @@ self.addEventListener('fetch', (event) => {
           // Обновляем закешированную страницу свежим ответом
           const responseToCache = response.clone();
           caches.open(CACHE_NAME).then((cache) => {
-            cache.put('/FindEndPortal/', responseToCache);
-            cache.put('/FindEndPortal/index.html', responseToCache);
+            cache.put('/', responseToCache);
+            cache.put('/index.html', responseToCache);
           });
 
           return response;
@@ -56,7 +56,7 @@ self.addEventListener('fetch', (event) => {
             if (response) {
               return response;
             }
-            return caches.match('/FindEndPortal/');
+            return caches.match('/');
           })
         )
     );
@@ -92,14 +92,14 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Activate - полностью очищает старое хранилище findendportal-v2
+// Activate - полностью очищает старые кэши
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName); // Удаляем v1 намертво
+            return caches.delete(cacheName); // Удаляем старые версии намертво
           }
         })
       );

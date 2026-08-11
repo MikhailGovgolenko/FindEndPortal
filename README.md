@@ -1,6 +1,6 @@
 <h1 align="center">FindEndPortal</h1>
 
-<p align="center">Web version: https://mikhailgovgolenko.github.io/FindEndPortal/</p>
+<p align="center">Web version: https://findendportal.govgolenko.ru/</p>
 
 A utility to calculate trajectories and locate Minecraft Strongholds using Eyes of Ender.
 

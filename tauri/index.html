@@ -4,10 +4,13 @@
         <meta charset="UTF-8" />
 
         <!-- Оставляем только фавикон для вкладки браузера -->
-        <link rel="icon" type="image/png" href="/FindEndPortal/favicon-v2.png" />
+        <link rel="icon" type="image/png" href="/favicon-v2.png" />
 
         <!-- Манифест, который теперь полностью управляет иконкой на экране Домой -->
-        <link rel="manifest" href="/FindEndPortal/manifest.webmanifest" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+
+        <!-- Canonical для нового custom domain -->
+        <link rel="canonical" href="https://findendportal.govgolenko.ru/" />
 
         <!-- PWA мета теги -->
         <meta name="application-name" content="FindEndPortal" />
@@ -36,11 +39,11 @@
         />
         <meta
             property="og:image"
-            content="https://mikhailgovgolenko.github.io/FindEndPortal/favicon-v2.png"
+            content="https://findendportal.govgolenko.ru/favicon-v2.png"
         />
         <meta
             property="og:url"
-            content="https://mikhailgovgolenko.github.io/FindEndPortal/"
+            content="https://findendportal.govgolenko.ru/"
         />
         <meta property="og:type" content="website" />
 
@@ -53,7 +56,7 @@
         />
         <meta
             name="twitter:image"
-            content="https://mikhailgovgolenko.github.io/FindEndPortal/favicon-v2.png"
+            content="https://findendportal.govgolenko.ru/favicon-v2.png"
         />
     </head>
 
@@ -65,8 +68,8 @@
         <script>
             if ("serviceWorker" in navigator) {
                 navigator.serviceWorker
-                    .register("/FindEndPortal/sw.js?v=3", {
-                        scope: "/FindEndPortal/",
+                    .register("/sw.js?v=3", {
+                        scope: "/",
                     })
                     .then((reg) => {
                         reg.update();

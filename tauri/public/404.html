@@ -7,22 +7,10 @@
     <script type="text/javascript">
       (function() {
         var l = window.location;
-        var path = l.pathname;
-        
-        // Если мы на /FindEndPortal/something и это 404, редиректим на /FindEndPortal/?p=/something
-        if (path.startsWith('/FindEndPortal/') && path !== '/FindEndPortal/' && path !== '/FindEndPortal/index.html') {
-          var pathSegments = path.slice('/FindEndPortal/'.length);
-          l.replace(
-            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            '/FindEndPortal/?p=/' + pathSegments
-          );
-        }
-        // Если мы на корне /FindEndPortal, перенаправим на index.html
-        else if (path === '/FindEndPortal/') {
-          l.replace(
-            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-            '/FindEndPortal/index.html'
-          );
+        // GitHub Pages отдаёт 404.html для любого несуществующего пути.
+        // Т.к. это одностраничное приложение, просто редиректим на корень.
+        if (l.pathname !== '/' && l.pathname !== '/index.html') {
+          l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/');
         }
       })();
     </script>
@@ -30,7 +18,7 @@
   <body>
     <!-- Fallback для случая если JS отключен -->
     <noscript>
-      <meta http-equiv="refresh" content="0; url=/FindEndPortal/">
+      <meta http-equiv="refresh" content="0; url=/">
     </noscript>
   </body>
 </html>
